@@ -25,7 +25,7 @@ def flag(region):
 # Likely useful in Prob0
 def read_rgbs():
     rgb_colors = {}
-    for line in open("rgbs.csv"):
+    for line in open("rgbs.txt"):
         # This sample code creates a very bad example dictionary.
         # I recommend it containing a dictionary with...
         # keys: color names
