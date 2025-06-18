@@ -1,36 +1,23 @@
-from pgl import GWindow, GImage
-from ColorObj import ColorObj
+import numpy as np
+from PIL import Image as im
 
 # For your convenience - 700 worked well for me
-GWINDOW_SIZE = 700
+IMAGE_SIZE = 700
 MAX_BRIGHTNESS = 255
+NUM_COLORS = 3
 
-gw = GWindow(GWINDOW_SIZE, GWINDOW_SIZE)
+def get_colors(img_arr):
+    return img_arr * MAX_BRIGHTNESS
 
 # Main Function
 def flag(region):
-    # This sample code creates a pixel array that is uninitialized
-    # TODO: Update the body of this function to create a flag
-    # Prob0: Implemement "read_rgbs" and update ColorObj.
-    # Prob1: I recommend calculations over the window size and the number of colors.
-    # Prob2: I recommend a dictionary of colors-to-ints that are incorporated into Prob0 calcs.
-    #        You will need to use the "region" argument for this problem.
-    # Prob3: Update ColorObj
-    # Prob4: Update ColorObj
-    rojo = ColorObj("rojo")
-    parr = [[rojo.get_color_at(row,col) for row in range(GWINDOW_SIZE)] for col in range(GWINDOW_SIZE)]
-    return parr
+    # Create an array IMAGE_SIZE pixels by IMAGE_SIZE pixels by NUM_COLORS colors
+    img_arr = np.ones([IMAGE_SIZE,IMAGE_SIZE,NUM_COLORS]).astype(np.uint8)
+    # Set all colors in the image array
+    img_arr = get_colors(img_arr)
+    # Convert the array to an image
+    img = im.fromarray(img_arr)
+    # Save the image as "flag.png"
+    img.save("flag.png")
 
-# Helper Function
-# Likely useful in Prob0
-def read_rgbs():
-    rgb_colors = {}
-    for line in open("rgbs.csv"):
-        # This sample code creates a very bad example dictionary.
-        # I recommend it containing a dictionary with...
-        # keys: color names
-        # values: lists of integers of length 3, corresponding to red-green-blue values
-        rgb_colors[line] = []
-    return rgb_colors
-
-gw.add(GImage(flag('Qullasuyu')))
+flag('Qullasuyu')
