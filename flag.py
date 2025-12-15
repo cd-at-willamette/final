@@ -21,7 +21,7 @@ def flag(region):
     # Prob3: Update ColorObj
     # Prob4: Update ColorObj
     colors = read_rgbs()
-    rojo = ColorObj(colors["rojo"])
+    rojo = colors[0]
     parr = [[rojo.get_color_at(row,col) for row in range(GWINDOW_SIZE)] for col in range(GWINDOW_SIZE)]
     return parr
 
@@ -31,6 +31,7 @@ def read_rgbs():
     return
 
 gw.add(GImage(flag('Qullasuyu')))
+
 
 
 
