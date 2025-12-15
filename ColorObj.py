@@ -16,7 +16,7 @@ class ColorObj:
     #        You may wish to use "luminance" and "colorscale" helper methods on Prob4.
 
     # Initializer
-    def __init__(self, line):
+    def __init__(self, color):
         self.name = ""
         self.parr = []
 
@@ -56,4 +56,5 @@ class ColorObj:
             b = GImage.get_blue(pixel)
             return round(0.299 * r + 0.587 * g + 0.114 * b)
         
+
         self.parr = self.parr
